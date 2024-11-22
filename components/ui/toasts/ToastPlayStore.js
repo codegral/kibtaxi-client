@@ -21,7 +21,7 @@ const ToastPlayStore = ({ show, handleClosePlayStoreToast }) => (
         <FontAwesomeIcon
           icon={faTimes}
           size="lg"
-          className="cursor-pointer"
+          className="cursor-pointer text-muted dark:text-muted-dark hover:text-dark hover:dark:text-white transition-all"
           onClick={handleClosePlayStoreToast}
         />
       </section>
