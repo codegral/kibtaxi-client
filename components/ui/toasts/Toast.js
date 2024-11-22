@@ -32,7 +32,7 @@ const Toast = ({ show, className, children }) => {
       initial={{ scale: 1.1 }}
       animate={{ scale: show ? [0.9, 1] : [1, 0.9] }}
       style={{ display }}
-      className={`toast absolute bottom-6 lg:bottom-4 right-1/2 !translate-x-1/2 lg:!translate-x-0 lg:right-4 w-11/12 lg:w-1/3 bg-white dark:bg-dark rounded-lg border dark:border-dark shadow p-3 z-50 ${className}`}
+      className={`toast absolute bottom-6 lg:bottom-4 right-1/2 !translate-x-1/2 lg:!translate-x-0 lg:right-4 w-11/12 lg:w-[25%] bg-white dark:bg-black rounded-lg border dark:border-dark shadow p-3 z-50 ${className}`}
     >
       {children}
     </motion.section>,
