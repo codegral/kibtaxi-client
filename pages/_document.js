@@ -40,6 +40,7 @@ export default function Document() {
         <Script>(adsbygoogle = window.adsbygoogle || []).push({});</Script>
         <div id="modal-backdrop"></div>
         <div id="bottomsheet-backdrop"></div>
+        <div id="toast-backdrop"></div>
       </body>
     </Html>
   );

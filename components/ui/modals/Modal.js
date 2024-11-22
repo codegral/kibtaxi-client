@@ -49,7 +49,6 @@ const Modal = ({ show, handleCloseModal, className, children }) => {
 
   useEffect(function () {
     setIsMounted(true);
-
     return () => setIsMounted(false);
   }, []);
 

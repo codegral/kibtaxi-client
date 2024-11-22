@@ -21,7 +21,7 @@ import { v4 } from "uuid";
 const getCurrentPosition = () =>
   new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej));
 
-export default function Home({}) {
+export default function Home() {
   const [isLocationAllowed, setIsLocationAllowed] = useState(null);
   const [popular_taxis, setPopular_taxis] = useState(null);
   const [taxis, setTaxis] = useState(null);
@@ -42,6 +42,7 @@ export default function Home({}) {
   const handleCloseSelectCityModal = () => setSelectCityModal(false);
 
   const handleOpenSelectCityBottomSheet = () => setSelectCityBottomSheet(true);
+
   const handleCloseSelectCityBottomSheet = () =>
     setSelectCityBottomSheet(false);
 
