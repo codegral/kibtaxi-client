@@ -40,7 +40,7 @@ const TaxiProfilPage = ({ taxi }) => {
       <Head>
         <meta
           name="description"
-          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması | Kıbrıs Taxi | Kıbrıs taksi"
+          content={`${taxi.taxi_name} | Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması | Kıbrıs Taxi | Kıbrıs taksi`}
         />
         <meta
           name="keywords"
