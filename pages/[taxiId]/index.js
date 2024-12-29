@@ -10,13 +10,16 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import { useState } from "react";
 import { v4 } from "uuid";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const TaxiProfilPage = ({ taxi }) => {
+  const router = useRouter();
+  const { asPath } = router;
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleNextSlide = () => setCurrentSlide(1);
@@ -40,16 +43,68 @@ const TaxiProfilPage = ({ taxi }) => {
       <Head>
         <meta
           name="description"
-          content={`${taxi.taxi_name} | Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması | Kıbrıs Taxi | Kıbrıs taksi`}
+          content={`${taxi?.taxi_name} | Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması | Kıbrıs Taxi | Kıbrıs taksi`}
         />
         <meta
           name="keywords"
-          content={`${taxi.taxi_name}, kibtaxi, kktc taksi, kıbrıs taksi, kktc taxi, trnc taxi, trnc taksi, north cyprus taxi, north cyprus taksi, mağusa taksi, famagusta taxi, magosa taksi, girne taksi, kyrenia taksi, kyrenia taxi, nicosia taksi, nicosia taxi, ercan taksi, lefkoşa taksi`}
+          content={`${taxi?.taxi_name}, kibtaxi, kktc taksi, kıbrıs taksi, kktc taxi, trnc taxi, trnc taksi, north cyprus taxi, north cyprus taksi, mağusa taksi, famagusta taxi, magosa taksi, girne taksi, kyrenia taksi, kyrenia taxi, nicosia taksi, nicosia taxi, ercan taksi, lefkoşa taksi`}
+        />
+        <meta
+          property="og:image"
+          content={process.env.NEXT_PUBLIC_DEFAULT_THUMBNAIL}
+        />
+        <meta
+          property="og:title"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="og:description"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL}/${asPath}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:title"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="twitter:description"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="twitter:image"
+          content={process.env.NEXT_PUBLIC_DEFAULT_THUMBNAIL}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/${asPath}`}
         />
         <title>
-          {taxi.taxi_name} | Kibtaxi | Kıbrıs Taksi | KKTC Taksi | Kıbrıs'ın ve
+          {taxi?.taxi_name} | Kibtaxi | Kıbrıs Taksi | KKTC Taksi | Kıbrıs'ın ve
           Kuzey Kıbrıs'ın KKTC Taksi Uygulaması
         </title>
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "TaxiService",
+      "name": "Kibtaxi",
+      "url": "${process.env.NEXT_PUBLIC_SITE_URL}",
+      "logo": "${process.env.NEXT_PUBLIC_DEFAULT_LOGO}",
+      "description": "Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kıbrıs",
+        "addressCountry": "CY"
+      },
+      "telephone": "-"
+    }
+  `}
+        </script>
       </Head>
       <section className="flex gap-12 h-[92svh] overflow-y-auto p-4">
         <section className="lg:w-3/4 lg:border-r lg:border-r-muted lg:dark:border-r-muted-dark">
@@ -68,7 +123,8 @@ const TaxiProfilPage = ({ taxi }) => {
                     className="w-full h-full object-fit object-cover object-center"
                     width={256}
                     height={256}
-                    alt="Taxi Profile Image"
+                    alt={`${taxi?.taxi_name} Profile Picture`}
+                    loading="lazy"
                   />
                 ) : (
                   <Avatar />
@@ -77,7 +133,7 @@ const TaxiProfilPage = ({ taxi }) => {
             </section>
             <section>
               <section className="mb-1">
-                <h1 className="font-bold text-xl">{taxi.taxi_name}</h1>
+                <h1 className="font-bold text-xl">{taxi?.taxi_name}</h1>
                 <p className="flex items-center gap-1 text-muted dark:text-muted-dark lg:max-w-[320px]">
                   <FontAwesomeIcon icon={faLocationDot} />
                   <span className="line-clamp-1">{taxi?.taxi_address}</span>
@@ -176,6 +232,7 @@ const TaxiProfilPage = ({ taxi }) => {
                       height={328}
                       className="w-full h-full object-fit object-cover object-center"
                       alt={`${taxi?.taxi_name}'s Photos`}
+                      loading="lazy"
                     />
                   </li>
                 ))}
@@ -199,20 +256,21 @@ const TaxiProfilPage = ({ taxi }) => {
                         }}
                       >
                         <img
-                          src={taxi_review.reviewer_photo}
+                          src={taxi_review?.reviewer_photo}
                           width={48}
                           height={48}
                           className="w-full h-full object-cover object-center"
                           alt={`${taxi?.taxi_name}'s reviewer photo`}
+                          loading="lazy"
                         />
                       </div>
                     </section>
                     <section>
                       <h6 className="font-semibold">
-                        {taxi_review.reviewer_name}
+                        {taxi_review?.reviewer_name}
                       </h6>
                       <p className="text-sm text-muted dark:text-muted-dark">
-                        {taxi_review.reviewer_review?.text}
+                        {taxi_review?.reviewer_review?.text}
                       </p>
                     </section>
                   </li>
@@ -239,18 +297,33 @@ const TaxiProfilPage = ({ taxi }) => {
                     }}
                   >
                     <img
-                      src={taxi_review.reviewer_photo}
+                      src={taxi_review?.reviewer_photo}
                       width={48}
                       height={48}
                       className="w-full h-full object-cover object-center"
                       alt={`${taxi?.taxi_name}'s reviewer photo`}
+                      loading="lazy"
                     />
                   </div>
                 </section>
                 <section>
-                  <h6 className="font-semibold">{taxi_review.reviewer_name}</h6>
+                  <h6 className="font-semibold">
+                    {taxi_review?.reviewer_name}
+                  </h6>
+                  <span className="flex items-center gap-1">
+                    <span className="text-sm">
+                      {Number(taxi_review?.reviewer_rating)}
+                    </span>
+                    <span>
+                      <FontAwesomeIcon
+                        icon={faStar}
+                        size="xs"
+                        className="text-primary"
+                      />
+                    </span>
+                  </span>
                   <p className="text-sm text-muted dark:text-muted-dark">
-                    {taxi_review.reviewer_review?.text}
+                    {taxi_review?.reviewer_review?.text}
                   </p>
                 </section>
               </li>

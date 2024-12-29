@@ -49,7 +49,8 @@ const CardTaxi = ({ taxi, handleSelectTaxi }) => {
               className="w-full h-full object-fit object-cover object-center"
               width={256}
               height={256}
-              alt="Taxi Profile Image"
+              alt={`${taxi.taxi_name} Profile Photo`}
+              loading="lazy"
             />
           ) : (
             <Avatar />
