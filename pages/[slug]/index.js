@@ -336,10 +336,10 @@ const TaxiProfilPage = ({ taxi }) => {
 };
 
 export async function getServerSideProps({ query }) {
-  const { taxiId } = query;
+  const { slug } = query;
 
   const response = await HttpRequest.get(
-    `taxis/${taxiId}?API_KEY=${process.env.NEXT_PUBLIC_API_KEY}`
+    `taxis/${slug}?API_KEY=${process.env.NEXT_PUBLIC_API_KEY}`
   );
 
   const { taxi } = response.data;
