@@ -17,7 +17,7 @@ const CardTaxi = ({ taxi, handleSelectTaxi }) => {
 
   let taxi_stars = [];
 
-  const handleNavigate = () => router.push(`/${taxi?._id}`);
+  const handleNavigate = () => router.push(`/${taxi?.taxi_slug}`);
 
   if (taxi?.taxi_popularity)
     for (let i = 0; i < Math.round(Number(taxi?.taxi_popularity?.rating)); i++)

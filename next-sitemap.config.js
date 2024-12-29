@@ -12,7 +12,7 @@ module.exports = {
     const { taxis } = data.data;
 
     return taxis.map((taxi) => ({
-      loc: `/${taxi._id}`,
+      loc: `/${taxi.taxi_slug}`,
       changefreq: "daily",
       priority: 0.7,
       lastmod: new Date().toISOString(),

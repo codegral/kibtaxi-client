@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 const TaxiBottomSheet = ({ show, handleCloseBottomSheet, taxi }) => {
   const router = useRouter();
 
-  const handleNavigate = () => router.push(`/${taxi._id}`);
+  const handleNavigate = () => router.push(`/${taxi.taxi_slug}`);
 
   let taxi_stars = [];
 
