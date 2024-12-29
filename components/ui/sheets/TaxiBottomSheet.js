@@ -50,6 +50,7 @@ const TaxiBottomSheet = ({ show, handleCloseBottomSheet, taxi }) => {
                 width={64}
                 height={64}
                 alt={`${taxi.taxi_name} Profil Image`}
+                loading="lazy"
               />
             ) : (
               <Avatar />
@@ -134,6 +135,7 @@ const TaxiBottomSheet = ({ show, handleCloseBottomSheet, taxi }) => {
                   height={192}
                   className="w-full h-full object-fit object-cover object-center rounded"
                   alt={`${taxi?.taxi_name}'s Photos`}
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -157,6 +159,7 @@ const TaxiBottomSheet = ({ show, handleCloseBottomSheet, taxi }) => {
                       height={48}
                       className="w-full h-full object-cover object-center"
                       alt={`${taxi?.taxi_name}'s reviewer photo`}
+                      loading="lazy"
                     />
                   </div>
                 </section>

@@ -13,10 +13,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { v4 } from "uuid";
 
 const CityPage = ({ city, popular_taxis, taxis }) => {
+  const router = useRouter();
+  const { asPath } = router;
+
   const [selectedTaxi, setSelectedTaxi] = useState(null);
   const [modal, setModal] = useState(false);
   const [bottomSheet, setBottomSheet] = useState(false);
@@ -67,10 +71,62 @@ const CityPage = ({ city, popular_taxis, taxis }) => {
           name="keywords"
           content={`${city} taxi, ${city} taksi, kibtaxi, kktc taksi, kıbrıs taksi, kktc taxi, trnc taxi, trnc taksi, north cyprus taxi, north cyprus taksi, mağusa taksi, famagusta taxi, magosa taksi, girne taksi, kyrenia taksi, kyrenia taxi, nicosia taksi, nicosia taxi, ercan taksi, lefkoşa taksi`}
         />
+        <meta
+          property="og:image"
+          content={process.env.NEXT_PUBLIC_DEFAULT_THUMBNAIL}
+        />
+        <meta
+          property="og:title"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="og:description"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL}/${asPath}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:title"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="twitter:description"
+          content="Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması"
+        />
+        <meta
+          property="twitter:image"
+          content={process.env.NEXT_PUBLIC_DEFAULT_THUMBNAIL}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/${asPath}`}
+        />
         <title>
           {city} Taxi's | Kibtaxi | Kıbrıs Taksi | KKTC Taksi | Kıbrıs'ın ve
           Kuzey Kıbrıs'ın KKTC Taksi Uygulaması
         </title>
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "TaxiService",
+      "name": "Kibtaxi",
+      "url": "${process.env.NEXT_PUBLIC_SITE_URL}",
+      "logo": "${process.env.NEXT_PUBLIC_DEFAULT_LOGO}",
+      "description": "Kibtaxi KKTC ve Kuzey Kıbrıs'ın Taksi Uygulaması",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kıbrıs",
+        "addressCountry": "CY"
+      },
+      "telephone": "-"
+    }
+  `}
+        </script>
       </Head>
       <section id="app" className="flex items-start">
         <Aside

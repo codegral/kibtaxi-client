@@ -49,7 +49,8 @@ const ModalTaxi = ({ show, handleCloseModal, taxi }) => {
                 className="w-full h-full object-fit object-cover object-center cursor-pointer"
                 width={96}
                 height={96}
-                alt="Taxi Profile Image"
+                alt={`${taxi.taxi_name} Profile Photo`}
+                loading="lazy"
               />
             ) : (
               <Avatar />
@@ -72,8 +73,8 @@ const ModalTaxi = ({ show, handleCloseModal, taxi }) => {
                 {taxi?.taxi_popularity?.rating}
               </span>
               <span className="flex items-center gap-1">
-                {taxi_stars.length >= 0 &&
-                  taxi_stars.map((taxi_star) => taxi_star)}
+                {taxi_stars?.length > 0 &&
+                  taxi_stars?.map((taxi_star) => taxi_star)}
               </span>
               <span className="text-muted dark:text-muted-dark">
                 ({taxi?.taxi_popularity?.voted})
@@ -140,6 +141,7 @@ const ModalTaxi = ({ show, handleCloseModal, taxi }) => {
                     height={148}
                     className="w-full h-full object-fit object-cover object-center"
                     alt={`${taxi?.taxi_name}'s Photos`}
+                    loading="lazy"
                   />
                 </div>
               </li>
@@ -160,18 +162,33 @@ const ModalTaxi = ({ show, handleCloseModal, taxi }) => {
                     }}
                   >
                     <img
-                      src={taxi_review.reviewer_photo}
+                      src={taxi_review?.reviewer_photo}
                       width={48}
                       height={48}
                       className="w-full h-full object-cover object-center"
                       alt={`${taxi?.taxi_name}'s reviewer photo`}
+                      loading="lazy"
                     />
                   </div>
                 </section>
                 <section>
-                  <h6 className="font-semibold">{taxi_review.reviewer_name}</h6>
+                  <h6 className="font-semibold">
+                    {taxi_review?.reviewer_name}
+                  </h6>
+                  <span className="flex items-center gap-1">
+                    <span className="text-sm">
+                      {Number(taxi_review?.reviewer_rating)}
+                    </span>
+                    <span>
+                      <FontAwesomeIcon
+                        icon={faStar}
+                        size="xs"
+                        className="text-primary"
+                      />
+                    </span>
+                  </span>
                   <p className="text-sm text-muted dark:text-muted-dark">
-                    {taxi_review.reviewer_review?.text}
+                    {taxi_review?.reviewer_review?.text}
                   </p>
                 </section>
               </li>

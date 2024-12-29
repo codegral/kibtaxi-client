@@ -161,7 +161,7 @@ const Navbar = () => {
                           className="dropdown"
                         />
                       </li>
-                      <li
+                      {/* <li
                         className="dropdown flex items-center justify-between hover:bg-light hover:dark:bg-dark cursor-pointer transition-all px-4 py-3"
                         onClick={function () {
                           setSettingsDropdownCurrentPage(1);
@@ -182,7 +182,7 @@ const Navbar = () => {
                           size="sm"
                           className="dropdown"
                         />
-                      </li>
+                      </li> */}
                     </ul>
                   </section>
                 </motion.section>
