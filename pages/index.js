@@ -294,6 +294,8 @@ export async function getServerSideProps() {
   const response = await fetch(process.env.NEXT_PUBLIC_API);
   const data = await response.json();
 
+  console.log("data: ", data);
+
   console.group();
   console.log("Server status: ", data.status);
   console.log("Server message: ", data.message);

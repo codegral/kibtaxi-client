@@ -31,6 +31,8 @@ const ModalTaxi = ({ show, handleCloseModal, taxi }) => {
         />
       );
 
+  console.log("taxi: ", taxi);
+
   return (
     <Modal show={show} handleCloseModal={handleCloseModal}>
       <Modal.Header className={"grid grid-cols-12"}>
